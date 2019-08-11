@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+    {% block content %}    
+
+        <section style="text-align: center;">
+            <h1> About </h1>
+            <h2> Jinn O's 소소한 일상 Blog 입니다. </h2>
+            <h3> 마음껏 소통해주세요! </h3>
+
+            <hr>
+
+            <h5> 링크를 표현할때는 { % url ' 이동하고 싶은 페이지의 name' % } 으로 표현하세요! </h5>
+
+            <a href="{% url 'home' %}"> 홈으로 돌아가기</a>
+        </section>
+    
+    {% endblock %}

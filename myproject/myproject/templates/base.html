@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Jinn O's 소소한 일상</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poor+Story&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+        <style>
+            .headerTitle {
+                color: aliceblue;
+                font-family: 'Nanum Myeongjo', serif;
+                text-align: center;
+                margin-bottom: 0px;
+                padding-top: 10px;
+            }
+            .headerTitleImg {
+                width: 60px;
+            }
+            .navSearch {
+                margin: 10px;
+                height: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="navbar-dark bg-dark">
+            <h1 class="headerTitle"><img src="https://blogpfthumb-phinf.pstatic.net/MjAxOTA3MTFfMjk4/MDAxNTYyNzcyODc3ODY5.ObQyZ0Vu-97s66JH34F1U2Omp22rWsoO-sfCMacf_4wg.RMsCbJG_dQZ7_nlJUruun6EfLRUsEEzgO0UzcpQKqhYg.PNG.jinn_o/clipart2695150.png?type=w161"
+                class="headerTitleImg">   소소한 일상들</h1>
+        </header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a style="color:aliceblue;" href="{% url 'home' %}"> HOME </a>
+                {% if user.is_authenticated %}
+                <span style="color: dark;">---</span>
+                <span style="color:aliceblue;">환영합니다. {{ user.username }} 님 :> </span>
+                {% endif %}
+
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="{% url 'about' %}">ABOUT</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="{% url 'portfolio' %}">PORTFOLIO</a>
+                        </li>
+
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="{% url 'new' %}">글쓰기</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                            <form id="logout" method="POST" action="{% url 'logout' %}">
+                                    {% csrf_token %} <input type="hidden" />
+                            </form>
+                        </li>
+
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="{% url 'signup' %}">SignUp !</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="{% url 'login' %}">LOGIN :)</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <form class="form-inline" action="{% url 'search' %}">
+                    <input type="text" name="searching" class="navSearch form-control mr-sm-2">
+                    <button type="submit" class="btn btn-outline-light navSearch navTitle"
+                            style="font-size: 10px;"> 검색 </button>
+                </form>  
+            </div>         
+        </nav>
+        
+        <br>
+        <br>
+        
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </body>
+</html>

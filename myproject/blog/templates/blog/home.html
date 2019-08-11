@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+        
+    {% block content %}        
+
+        <!-- {{ blogs }}
+
+        {{ blogs.all }} -->
+
+        
+        
+        <!-- {% for article in blogs.all %}
+            <div class=" container card border-light mb-3" style="max-width: 36rem;">
+                <div class="card-header">{{article.pub_date}}</div>
+                <div class="card-body">
+                  <h5 class="card-title">{{article.title}}</h5>
+                  <p class="card-text">{{article.body}} <a href="{% url 'detail' article.id %}">...more</a></p>
+                </div>
+            </div>
+        {% endfor %} -->
+
+        {% for article in blogs.all %}
+        <div class=" container card border-light mb-3" style="max-width: 36rem;">
+            <div class="card-header">{{article.pub_date}}</div>
+            <div class="card-body">
+              <h5 class="card-title">{{article.title}}</h5>
+              <p class="card-text">{{article.summary}} <a href="{% url 'detail' article.id %}">...more</a></p>
+            </div>
+        </div>
+        {% endfor %}
+
+    {% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+    
+    {% block content %}
+
+    {% if error %}
+    {{ error }}
+    <br>
+    <br>
+    {% endif %}
+
+    <div style="margin-left: 20%; margin-right: 20%; border: 2px solid skyblue; text-align: center; box-shadow: 5px 5px gray; border-radius: 3.5em;">
+        <div style="margin: 1px; border: 3.5px dotted skyblue; border-radius: 3.5em;">
+                <h1 style="padding-top: 15px; font-family: 'Permanent Marker', cursive;">Sign in !!</h1>
+                <p style="color: gray; font-family: 'Yanone Kaffeesatz', sans-serif;">WELCOME! See you again :)</p>
+                <hr>
+                <form method="POST" action="{% url 'login' %}">
+                    
+                    {% csrf_token %}
+
+                    <h5 style="font-family: 'Yanone Kaffeesatz', sans-serif;">User Name</h5>
+                    <input type="text" name="user" placeholder="아이디를 입력해주세요."> <br><br>
+
+                    <h5 style="font-family: 'Yanone Kaffeesatz', sans-serif;">Password</h5>
+                    <input type="password" name="password" placeholder="비밀번호를 입력해주세요."> <br><br>
+
+                    <input class="btn btn-dark" style="font-family: 'Permanent Marker', cursive;" type="submit" value="LOGIN">
+                </form>
+
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+    {% endblock %}

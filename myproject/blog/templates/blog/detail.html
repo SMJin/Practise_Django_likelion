@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+    
+    {% block content %}
+
+            <section>
+                <div class="card" style="width: 54rem; margin:auto; text-align: center;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{blog.id}} 번째 글 :: {{blog.title}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{blog.pub_date}}</h6>
+                        <p class="card-text">{{blog.body}}</p>
+                        <a href="{% url 'home' %}" class="card-link">홈으로 돌아가기</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+
+            </section>
+
+            <br>
+            <br>
+
+    {% endblock %}

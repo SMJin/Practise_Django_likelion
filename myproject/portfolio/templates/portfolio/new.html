@@ -1,0 +1,21 @@
+{% extends 'base_folio.html' %}
+    
+    {% block content %}
+
+    <h1 class="jumbotron-heading">Upload your IMG !!</h1>
+    <p class="lead text-muted">Something great things are happend every day. Lucky day.</p>
+    <hr>
+    <form action="{% url 'img_upload' %}">
+        <h5> Title </h5>
+        <input type="text" name="title" placeholder="제목을 입력해주세요.">
+        <br><br>
+        <h5> Upload IMG </h5>
+        <input type="file" name="image">
+        <br><br>
+        <h5> Description </h5>
+        <textarea name="description" cols="40px" rows="10px" placeholder="500자까지만 입력됩니다."></textarea>
+        <br><br>
+        <input type="submit" value="제출하기">
+    </form>
+
+    {% endblock %}

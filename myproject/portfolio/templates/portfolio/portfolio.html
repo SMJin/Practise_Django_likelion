@@ -1,0 +1,12 @@
+{% extends 'base_folio.html' %}
+
+    {% block content %}
+
+      <h1 class="jumbotron-heading">Jinn O's 연습장</h1>
+      <p class="lead text-muted">Something great things are happend every day. Lucky day.</p>
+      <p>
+        <a href="{% url 'home' %}" class="btn btn-dark my-2">Blog HOME 으로 돌아가기</a>
+        <a href="{% url 'upload' %}" class="btn btn-secondary my-2">이미지 업로드하기</a>
+      </p>
+    
+    {% endblock %}
